@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  vulnerable-apache:
+    build:
+      context: ./docker/vulnerable
+    container_name: cve-2021-41773-vulnerable
+    ports:
+      - "127.0.0.1:8080:80"   # Apache 2.4.49 — vulnerable
+
+  patched-apache:
+    build:
+      context: ./docker/patched
+    container_name: cve-2021-41773-patched
+    ports:
+      - "127.0.0.1:8081:80"   # Apache 2.4.51 — remediated
+
